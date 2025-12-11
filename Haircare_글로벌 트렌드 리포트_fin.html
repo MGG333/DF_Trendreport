@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr.FORHAIR Global Market Analysis Report v9.3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <style>
+    :root {
+      --navy: #1e40af;
+      --navy-hover: #1e3a8a;
+      --amber: #d97706;
+      --emerald: #059669;
+      --slate: #64748b;
+      --bg-secondary: #f8f9fa;
+      --border: #e5e7eb;
+    }
+    
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg-secondary);
+      color: #1a202c;
+      line-height: 1.6;
+    }
+    
+    .tab {
+      transition: all 0.2s;
+    }
+    
+    .tab.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    a:hover { text-decoration: underline; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="p-4 md:p-8 bg-slate-50">
+
+  <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-800 text-white rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-blue-900 transition-colors z-50">↑</button>
+
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-blue-900 mb-2">Dr.FORHAIR Global Market Analysis</h1>
+      <div class="text-slate-600 mb-4 font-medium">Global Strategic Report 2025-2030</div>
+      <div class="flex flex-wrap gap-4 text-xs text-slate-500">
+        <span class="bg-white px-3 py-1 rounded border">📅 작성일: 2025년 12월 10일</span>
+        <span class="bg-white px-3 py-1 rounded border">📊 Version: v9.3 (Section Order Updated)</span>
+        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded border border-blue-100">✅ 미국 외 시장 추후 업데이트 예정</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="sticky top-0 z-40 bg-[#f8f9fa] pt-4 pb-4 mb-6 border-b border-gray-200 overflow-x-auto">
+      <div class="flex gap-2 min-w-max px-1">
+        <button class="tab active px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('global')">글로벌 통합</button>
+        <button class="tab px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('korea')">한국 (Korea)</button>
+        <button class="tab px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('usa')">미국 (USA)</button>
+        <button class="tab px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('europe')">유럽 (Europe)</button>
+        <button class="tab px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('china')">중국 (China)</button>
+        <button class="tab px-6 py-3 rounded-lg font-bold border-2 border-gray-200 bg-white text-blue-900 hover:bg-gray-50" onclick="switchTab('japan')">일본 (Japan)</button>
+      </div>
+    </div>
+
+    <!-- GLOBAL TAB -->
+    <div id="global" class="tab-content active">
+      <!-- Executive Summary -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="card p-6 border-t-4 border-blue-800"><div class="text-3xl mb-3">🌏</div><div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Hair And Scalp Care Market</div><div class="text-3xl font-bold text-blue-900 mb-1">$103.94B <span class="text-lg text-slate-500 font-normal">(2024)</span></div><div class="text-xl font-bold text-emerald-600 mb-2">CAGR 6.4% ↗</div><div class="text-sm text-slate-600">2030년 전망: <strong>$151.07B</strong><br><a href="https://www.grandviewresearch.com/industry-analysis/hair-care-market" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div></div>
+        
+        <!-- Modified Card based on feedback -->
+        <div class="card p-6 border-t-4 border-amber-600">
+            <div class="text-3xl mb-3">🚀</div>
+            <div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Key Growth Driver</div>
+            <div class="text-3xl font-bold text-amber-600 mb-1">Hair Regrowth</div>
+            <div class="text-xl font-bold text-amber-600 mb-2">High Growth Segment</div>
+            <div class="text-sm text-slate-600">
+                주요 성장 카테고리:<br>
+                <strong>Scalp Scrub (10.2%)</strong><br>
+                <strong>Serum (7.07%)</strong>
+            </div>
+        </div>
+
+        <div class="card p-6 border-t-4 border-purple-600"><div class="text-3xl mb-3">🎯</div><div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Strategic Priority</div><div class="text-2xl font-bold text-purple-700 mb-1">3-Year Plan</div><ul class="text-sm text-slate-600 list-disc ml-4 mt-2 space-y-1"><li><strong>Hair Regrowth</strong> 전문화 (1순위)</li><li><strong>Premium</strong> 포지셔닝 (Luxury 12.8%)</li><li><strong>남성 시장</strong> 개척 (미개척 기회)</li></ul></div>
+      </section>
+
+      <!-- Global Chart -->
+      <section class="mb-10"><h2 class="text-2xl font-bold text-blue-900 mb-6">📈 Global & Regional Growth Trajectory (2024-2030)</h2><div class="card p-6 bg-white"><div class="h-[400px] relative"><canvas id="globalGrowthChart"></canvas></div></div></section>
+      
+      <!-- Regional Snapshot -->
+      <section class="mb-10"><h2 class="text-2xl font-bold text-blue-900 mb-6">🗺️ Regional Market Snapshot</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card p-5 hover:shadow-lg transition-shadow cursor-pointer relative group border-2 border-purple-100" onclick="switchTab('korea')"><div class="flex justify-between items-start mb-4"><span class="text-2xl">🇰🇷</span><span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded">Trend Leader</span></div><h3 class="text-lg font-bold text-blue-900 mb-1">Korea</h3><div class="text-2xl font-bold text-slate-800 mb-1">$3.78B</div><div class="text-sm text-emerald-600 font-bold mb-3">CAGR 8.4%</div><p class="text-xs text-slate-600 leading-relaxed mb-4">K-Beauty 본거지. Hair & Scalp Care 시장 고성장.</p><a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/south-korea" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+                <div class="card p-5 hover:shadow-lg transition-shadow cursor-pointer relative group" onclick="switchTab('usa')"><div class="flex justify-between items-start mb-4"><span class="text-2xl">🇺🇸</span><span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">최대 시장</span></div><h3 class="text-lg font-bold text-blue-900 mb-1">USA</h3><div class="text-2xl font-bold text-slate-800 mb-1">$18.21B</div><div class="text-sm text-emerald-600 font-bold mb-3">CAGR 5.8%</div><p class="text-xs text-slate-600 leading-relaxed mb-4">온라인 우선, 남성 시장 기회, Hair Regrowth 고성장.</p><a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/united-states" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+                <div class="card p-5 hover:shadow-lg transition-shadow cursor-pointer relative group" onclick="switchTab('europe')"><div class="flex justify-between items-start mb-4"><span class="text-2xl">🇪🇺</span><span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded">성장 가속</span></div><h3 class="text-lg font-bold text-blue-900 mb-1">Europe</h3><div class="text-2xl font-bold text-slate-800 mb-1">$20.91B</div><div class="text-sm text-emerald-600 font-bold mb-3">CAGR 6.8%</div><p class="text-xs text-slate-600 leading-relaxed mb-4">Anti-dandruff 최대 비중.</p><a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/europe" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+                <div class="card p-5 hover:shadow-lg transition-shadow cursor-pointer relative group" onclick="switchTab('china')"><div class="flex justify-between items-start mb-4"><span class="text-2xl">🇨🇳</span><span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">High Growth</span></div><h3 class="text-lg font-bold text-blue-900 mb-1">China</h3><div class="text-2xl font-bold text-slate-800 mb-1">$12.30B</div><div class="text-sm text-emerald-600 font-bold mb-3">CAGR 6.3%</div><p class="text-xs text-slate-600 leading-relaxed mb-4">빠른 도시화, 프리미엄 헤어케어 수요 급증.</p><a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/china" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+                <div class="card p-5 hover:shadow-lg transition-shadow cursor-pointer relative group" onclick="switchTab('japan')"><div class="flex justify-between items-start mb-4"><span class="text-2xl">🇯🇵</span><span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">고령화</span></div><h3 class="text-lg font-bold text-blue-900 mb-1">Japan</h3><div class="text-2xl font-bold text-slate-800 mb-1">$4.69B</div><div class="text-sm text-emerald-600 font-bold mb-3">CAGR 5.7%</div><p class="text-xs text-slate-600 leading-relaxed mb-4">고령화 대응, 전통 성분(유자, 녹차 등) 신뢰도 높음.</p><a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/japan" target="_blank" onclick="event.stopPropagation()" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+            </div>
+      </section>
+
+      <!-- Trends -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">📊 Hair care Trends (Global)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card p-6">
+             <div class="flex justify-between items-center mb-4 border-b pb-2"><h3 class="text-lg font-bold text-slate-700">Top Growth Trends (CAGR)</h3><span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded font-bold">Forecast</span></div>
+            <div class="h-[350px] relative"><canvas id="trendChart"></canvas></div>
+            <p class="text-xs text-right text-slate-400 mt-4">* AI 및 지속가능성(Sustainable) 관련 기술 최고 성장세</p>
+            <div class="mt-4 pt-4 border-t border-gray-100 flex flex-wrap gap-2 text-xs text-slate-500 justify-end">
+                <span>Sources:</span>
+                <a href="https://www.360iresearch.com/library/intelligence/ai-haircare-advisor" target="_blank" class="hover:text-blue-600 hover:underline">360iResearch</a>,
+                <a href="https://www.insightaceanalytic.com/report/ai-integrated-sustainable-regenerative-beauty-market/3182" target="_blank" class="hover:text-blue-600 hover:underline">InsightAce</a>,
+                <a href="https://www.grandviewresearch.com/industry-analysis/luxury-hair-care-market" target="_blank" class="hover:text-blue-600 hover:underline">GVR</a>
+            </div>
+          </div>
+          <div class="card p-6 overflow-y-auto h-[450px] md:h-auto">
+             <h3 class="text-lg font-bold text-slate-700 mb-4 border-b pb-2">Market Size & Sources (2024-2030)</h3>
+             <ul class="space-y-4">
+               <!-- 1. AI Advisor: Corrected Data -->
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-purple-600 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">1</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">AI & Personalization</span><span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded">CAGR 11.96%</span></div><div class="text-sm text-slate-600 mb-1">Advisor Market: $279.47M (2024) → <strong>$690.37M (2032)</strong></div><a href="https://www.360iresearch.com/library/intelligence/ai-haircare-advisor" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 360iResearch</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-indigo-600 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">2</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">AI Sustainable Beauty</span><span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded">CAGR 22.9%</span></div><div class="text-sm text-slate-600 mb-1">Regenerative Beauty Market (2025–2034)</div><a href="https://www.insightaceanalytic.com/report/ai-integrated-sustainable-regenerative-beauty-market/3182" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 InsightAce Analytic</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-blue-600 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">3</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">Scalp Care</span><span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded">CAGR 6.5%</span></div><div class="text-sm text-slate-600 mb-1">$5.2B (2024) → <strong>$8.9B (2033)</strong></div><a href="https://www.verifiedmarketreports.com/product/scalp-care-market/" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 verifiedmarketreports</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-pink-600 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">4</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">Premium / Luxury</span><span class="text-xs font-bold text-pink-600 bg-pink-100 px-2 py-0.5 rounded">CAGR 9.4%</span></div><div class="text-sm text-slate-600 mb-1">$23.2B (2024) → <strong>$40.24B (2030)</strong></div><a href="https://www.grandviewresearch.com/industry-analysis/luxury-hair-care-market" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 Grand View Research</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-emerald-600 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">5</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">Natural / Organic</span><span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded">CAGR 9.4%</span></div><div class="text-sm text-slate-600 mb-1">$10.17B (2024) → <strong>$16.99B (2030)</strong></div><a href="https://www.grandviewresearch.com/industry-analysis/natural-hair-care-products-market" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 Grand View Research</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-amber-500 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">6</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">Bond Repair</span><span class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded">CAGR 9.3%</span></div><div class="text-sm text-slate-600 mb-1">$273.3M (2023) → High Growth Niche</div><a href="https://www.persistencemarketresearch.com/market-research/hair-bond-multiplier-market.asp" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 Persistence Market</a></div></li>
+               
+               <li class="flex items-start gap-3 p-2 hover:bg-slate-50 rounded transition-colors"><span class="bg-slate-500 text-white font-bold w-6 h-6 rounded flex items-center justify-center flex-shrink-0 text-xs">7</span><div class="w-full"><div class="flex justify-between items-center"><span class="font-bold text-slate-800">Hair Loss Treatment</span><span class="text-xs font-bold text-slate-600 bg-slate-200 px-2 py-0.5 rounded">CAGR 7.77%</span></div><div class="text-sm text-slate-600 mb-1">Aggressive Scenario: $2.93B → <strong>$4.26B (2030)</strong></div><a href="https://www.mordorintelligence.com/industry-reports/hair-loss-treatment-products-market" target="_blank" class="text-xs text-blue-500 hover:underline">🔗 Mordor Intelligence</a></div></li>
+             </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- KOREA TAB -->
+    <div id="korea" class="tab-content">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="card p-6">
+          <h3 class="text-gray-500 text-sm font-bold uppercase">Hair & Scalp Care (Market Size 2024)</h3>
+          <div class="text-3xl font-bold text-blue-900">$3.78B</div>
+          <div class="text-sm text-emerald-600 font-bold mb-2">CAGR 8.4%</div>
+          <a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/south-korea" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
+            🔗 View Report →
+          </a>
+        </div>
+        <div class="card p-6">
+          <h3 class="text-gray-500 text-sm font-bold uppercase">Top Growth Segment</h3>
+          <div class="text-2xl font-bold text-green-700">Organic products</div>
+          <div class="text-sm text-slate-600 font-bold mb-2">CAGR 7.23%</div>
+          <a href="https://www.mordorintelligence.com/industry-reports/south-korea-hair-care-market-industry" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
+            🔗 View Report →
+          </a>
+        </div>
+      </section>
+      <section class="card p-12 text-center bg-gray-50 border-dashed border-2 border-gray-300">
+        <div class="text-4xl mb-4">🚧</div>
+        <h3 class="text-xl font-bold text-slate-600 mb-2">콘텐츠 제작 예정</h3>
+        <p class="text-slate-500 text-sm">추가 데이터 분석 및 전략 수립 중입니다.</p>
+      </section>
+    </div>
+
+    <!-- USA TAB -->
+    <div id="usa" class="tab-content">
+      <!-- 1. Market Size -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="card p-6">
+          <h3 class="text-gray-500 text-sm font-bold uppercase">Hair & Scalp Care (Market Size 2024)</h3>
+          <div class="text-3xl font-bold text-blue-900">$18.21B</div>
+          <div class="text-sm text-emerald-600 font-bold mb-2">CAGR 5.8%</div>
+          <a href="https://www.grandviewresearch.com/horizon/outlook/hair-and-scalp-care-market/united-states" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
+            View Report →
+          </a>
+        </div>
+        <div class="card p-6">
+          <h3 class="text-gray-500 text-sm font-bold uppercase">Anti-hair Loss shampoo (2024)</h3>
+          <div class="text-3xl font-bold text-blue-900">$3.79B</div>
+          <div class="text-sm text-emerald-600 font-bold mb-2">CAGR 5.97%</div>
+          <a href="https://www.verifiedmarketreports.com/product/anti-hair-loss-shampoo-market/" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
+            View Report →
+          </a>
+        </div>
+      </section>
+
+      <!-- 2. Growth Chart -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">📈 USA Market Growth (2024-2030)</h2>
+        <div class="card p-6 h-[400px] relative"><canvas id="usaGrowthChart"></canvas></div>
+      </section>
+
+      <!-- 3. US Category Trend Forecast -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">🇺🇸 US Category Trend Forecast (2024-2030)</h2>
+        <div class="card p-6 mb-8 bg-white border border-slate-200">
+          <div class="flex justify-between items-end mb-6">
+            <div><h3 class="text-xl font-bold text-slate-800">Category Growth Projection</h3><p class="text-sm text-slate-500">2024-2030 CAGR 기준 성장 추이 (단위: $B)</p></div>
+            <div class="text-xs text-slate-400">* Data source: Combined market reports</div>
+          </div>
+          <div class="h-[400px] relative"><canvas id="usCategoryGrowthChart"></canvas></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <!-- Insights Cards (Corrected Serum & Scrub CAGRs) -->
+          <div class="card p-5 hover:-translate-y-1 transition-all duration-300 border-t-4 border-slate-400 bg-white group">
+            <div class="flex items-center justify-between mb-3"><span class="text-2xl group-hover:scale-110 transition-transform">🧴</span><span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded-full">CAGR 3.5%</span></div><h4 class="font-bold text-slate-800 mb-2">Shampoo</h4><div class="text-sm text-slate-600 leading-snug space-y-1"><p>✅ <strong>Functional:</strong> 탈모/비건 등 세분화된 기능성</p><p>✅ <strong>Stable:</strong> 필수재로서 안정적 성장</p></div><div class="mt-3 pt-3 border-t border-slate-100 text-right"><a href="https://www.grandviewresearch.com/industry-analysis/us-hair-care-products-market-report" target="_blank" class="text-xs text-blue-400 hover:text-blue-600">View Report →</a></div>
+          </div>
+          <div class="card p-5 hover:-translate-y-1 transition-all duration-300 border-t-4 border-blue-400 bg-white group">
+            <div class="flex items-center justify-between mb-3"><span class="text-2xl group-hover:scale-110 transition-transform">🚿</span><span class="bg-blue-50 text-blue-600 text-xs font-bold px-2 py-1 rounded-full">CAGR 4.2%</span></div><h4 class="font-bold text-slate-800 mb-2">Conditioner</h4><div class="text-sm text-slate-600 leading-snug space-y-1"><p>✅ <strong>Bond Repair:</strong> 손상 모발 결합 복구 기술</p><p>✅ <strong>Leave-in:</strong> 씻어내지 않는 제형 인기</p></div><div class="mt-3 pt-3 border-t border-slate-100 text-right"><a href="https://www.grandviewresearch.com/industry-analysis/us-hair-care-products-market-report" target="_blank" class="text-xs text-blue-400 hover:text-blue-600">View Report →</a></div>
+          </div>
+          <div class="card p-5 hover:-translate-y-1 transition-all duration-300 border-t-4 border-amber-500 bg-white group">
+            <div class="flex items-center justify-between mb-3"><span class="text-2xl group-hover:scale-110 transition-transform">🧪</span><span class="bg-amber-50 text-amber-600 text-xs font-bold px-2 py-1 rounded-full">CAGR 6.5%</span></div><h4 class="font-bold text-slate-800 mb-2">Hair Tonic</h4><div class="text-sm text-slate-600 leading-snug space-y-1"><p>✅ <strong>Anti-loss:</strong> 탈모/발모 집중 케어</p><p>✅ <strong>Herbal:</strong> 자연 유래 허벌 성분 선호</p></div><div class="mt-3 pt-3 border-t border-slate-100 text-right"><a href="https://www.verifiedmarketreports.com/product/hair-tonic-market/" target="_blank" class="text-xs text-blue-400 hover:text-blue-600">View Report →</a></div>
+          </div>
+          <div class="card p-5 hover:-translate-y-1 transition-all duration-300 border-t-4 border-purple-500 bg-purple-50/50 group shadow-md border-purple-100">
+            <!-- Serum: Changed to 7.1% (Straits) -->
+            <div class="flex items-center justify-between mb-3"><span class="text-2xl group-hover:scale-110 transition-transform">💧</span><span class="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full">CAGR 7.1%</span></div><h4 class="font-bold text-purple-900 mb-2">Hair Serum</h4><div class="text-sm text-slate-700 leading-snug space-y-1"><p>🔥 <strong>Skinification:</strong> 두피도 피부처럼 관리</p><p>🔥 <strong>High-end:</strong> 고기능성 펩타이드/세럼</p></div><div class="mt-3 pt-3 border-t border-purple-100 text-right"><a href="https://straitsresearch.com/report/hair-serum-market" target="_blank" class="text-xs text-purple-500 hover:text-purple-700 font-bold">View Report →</a></div>
+          </div>
+          <div class="card p-5 hover:-translate-y-1 transition-all duration-300 border-t-4 border-emerald-500 bg-emerald-50/50 group shadow-md border-emerald-100">
+            <!-- Scrub: Changed to 10.2% (FMI) -->
+            <div class="flex items-center justify-between mb-3"><span class="text-2xl group-hover:scale-110 transition-transform">🌿</span><span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded-full">CAGR 10.2%</span></div><h4 class="font-bold text-emerald-900 mb-2">Scalp Scrub</h4><div class="text-sm text-slate-700 leading-snug space-y-1"><p>🚀 <strong>Detox:</strong> 두피 각질 제거 & 딥클렌징</p><p>🚀 <strong>Wellness:</strong> 스파/살롱 경험의 홈케어화</p></div><div class="mt-3 pt-3 border-t border-emerald-100 text-right"><a href="https://www.futuremarketinsights.com/reports/scalp-scrub-market" target="_blank" class="text-xs text-emerald-600 hover:text-emerald-800 font-bold">View Report →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Top 4 Platforms (v7.6) -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">🛒 Top 4 Online Haircare Platforms & Trends (2025 Forecast)</h2>
+        <div class="card p-6 mb-8">
+          <h3 class="text-lg font-bold text-slate-700 mb-4 border-b pb-2">US Beauty E-Commerce Market Share Forecast (2024 vs 2030)</h3>
+          <div class="h-[300px] relative"><canvas id="usaPlatformChartV6"></canvas></div>
+          <p class="text-xs text-slate-500 mt-2 text-right">* Amazon의 독보적 성장(15% 점유율) 및 TikTok Shop의 부상</p>
+          <a href="https://www.retaildive.com/news/beauty-growth-amazon-tiktok-shop-market-share/745231/" target="_blank" class="text-xs text-blue-500 hover:underline block mt-2">
+            View Report →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Amazon -->
+          <div class="card p-6 border-l-8 border-yellow-500 hover:shadow-lg transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-3"><span class="text-3xl bg-yellow-100 p-2 rounded-full">📦</span><div><h3 class="text-xl font-bold text-slate-900">Amazon</h3><span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded font-bold">#1 Leader (14.5%)</span></div></div>
+              <div class="text-right"><div class="text-sm font-bold text-slate-600">성장률</div><div class="text-lg font-bold text-yellow-600">+12-15%</div></div>
+            </div>
+            <div class="space-y-3 mb-4 text-sm text-slate-700"><p><strong>🔥 Key Trend:</strong> Hair Loss(Nutrafol 27.6%), Red Light Therapy(+807%) 검색 폭증. 리뷰 기반 구매.</p><p><strong>👥 Target:</strong> 35-55세 여성, 탈모 고민 남성</p></div>
+            <div class="bg-yellow-50 border border-yellow-200 p-3 rounded text-sm text-slate-800"><strong>🎯Action Plan:</strong><ul class="list-disc pl-5 mt-1 text-xs space-y-1"><li>세럼/토닉 등 <strong>고기능성 제품 라인</strong> 집중</li><li><strong>초기 리뷰 마케팅</strong>(Vine Program) 투자</li></ul></div>
+          </div>
+          <!-- Walmart -->
+          <div class="card p-6 border-l-8 border-blue-600 hover:shadow-lg transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-3"><span class="text-3xl bg-blue-100 p-2 rounded-full">🛒</span><div><h3 class="text-xl font-bold text-slate-900">Walmart.com</h3><span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">#2 Omnichannel (13%)</span></div></div>
+              <div class="text-right"><div class="text-sm font-bold text-slate-600">성장률</div><div class="text-lg font-bold text-blue-600">~6% CAGR</div></div>
+            </div>
+            <div class="space-y-3 mb-4 text-sm text-slate-700"><p><strong>🔥 Key Trend:</strong> 텍스처드 헤어(Curly/Wavy) 카테고리 강화. 오프라인 픽업 연계.</p><p><strong>👥 Target:</strong> 가성비 중시, 다양한 헤어 타입 보유자</p></div>
+            <div class="bg-blue-50 border border-blue-200 p-3 rounded text-sm text-slate-800"><strong>🎯Action Plan:</strong><ul class="list-disc pl-5 mt-1 text-xs space-y-1"><li>오프라인 매장 진열과 연계된 <strong>프로모션</strong> 기획</li><li><strong>자연/유기농</strong> 키워드 강조</li></ul></div>
+          </div>
+          <!-- Sephora -->
+          <div class="card p-6 border-l-8 border-slate-900 hover:shadow-lg transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-3"><span class="text-3xl bg-gray-100 p-2 rounded-full">🛍️</span><div><h3 class="text-xl font-bold text-slate-900">Sephora</h3><span class="text-xs bg-gray-200 text-gray-800 px-2 py-0.5 rounded font-bold">#3 Premium (10%)</span></div></div>
+              <div class="text-right"><div class="text-sm font-bold text-slate-600">성장률</div><div class="text-lg font-bold text-slate-700">Flat (성숙)</div></div>
+            </div>
+            <div class="space-y-3 mb-4 text-sm text-slate-700"><p><strong>🔥 Key Trend:</strong> Skinification(두피 스킨케어). K-Beauty 섹션. 고가($40+) 제품 위주.</p><p><strong>👥 Target:</strong> 뷰티 고관여층, Beauty Insider 멤버</p></div>
+            <div class="bg-gray-50 border border-gray-200 p-3 rounded text-sm text-slate-800"><strong>🎯Action Plan:</strong><ul class="list-disc pl-5 mt-1 text-xs space-y-1"><li><strong>프리미엄 세럼($50+)</strong> 라인 입점 제안</li><li><strong>Times Square 플래그십</strong> K-Beauty존 공략</li><li><strong>임상 데이터</strong> 기반의 브랜드 신뢰도 어필</li></ul></div>
+          </div>
+          <!-- TikTok Shop -->
+          <div class="card p-6 border-l-8 border-pink-500 hover:shadow-lg transition-all">
+            <div class="flex justify-between items-start mb-4">
+              <div class="flex items-center gap-3"><span class="text-3xl bg-pink-100 p-2 rounded-full">🎵</span><div><h3 class="text-xl font-bold text-slate-900">TikTok Shop</h3><span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded font-bold">🚀 Rising (2-3%)</span></div></div>
+              <div class="text-right"><div class="text-sm font-bold text-slate-600">성장률</div><div class="text-lg font-bold text-pink-600">+22% YoY</div></div>
+            </div>
+            <div class="space-y-3 mb-4 text-sm text-slate-700"><p><strong>🔥 Key Trend:</strong> #CurlyGirlMethod 등 바이럴 챌린지. 인플루언서 공구. 라이브 커머스.</p><p><strong>👥 Target:</strong> Gen Z (18-34세), 트렌드 민감층</p></div>
+            <div class="bg-pink-50 border border-pink-200 p-3 rounded text-sm text-slate-800"><strong>🎯Action Plan:</strong><ul class="list-disc pl-5 mt-1 text-xs space-y-1"><li>내년 상반기 <strong>공식 샵 오픈</strong> 및 라이브 방송</li><li><strong>인플루언서 15-20명</strong> 섭외하여 챌린지 진행</li><li>숏폼 최적화 <strong>Before/After 영상</strong> 제작</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Platform Trend Ingredients -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">🇺🇸 Platform Trend Ingredients TOP 3</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Amazon Column -->
+          <div class="card border-t-8 border-yellow-500 bg-white">
+            <div class="p-4 bg-yellow-50 border-b border-yellow-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">📦 Amazon <span class="text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded">#1 Market</span></h3></div>
+            <div class="p-4 space-y-4">
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#1 Biotin</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">$13.58M</span></div><p class="text-xs text-slate-600">Post-COVID 탈모. Nutrafol 리딩.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#2 Argan Oil</span><span class="text-xs bg-slate-100 text-slate-600 font-bold px-1.5 py-0.5 rounded">$11.02M</span></div><p class="text-xs text-slate-600">보습 & 프리미엄. Moroccanoil, Olaplex.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#3 Charcoal</span><span class="text-xs bg-purple-100 text-purple-600 font-bold px-1.5 py-0.5 rounded">+300%</span></div><p class="text-xs text-slate-600">두피 디톡스. 남성 그루밍 강세.</p></div>
+            </div>
+          </div>
+          <!-- Sephora Column -->
+          <div class="card border-t-8 border-slate-800 bg-white">
+            <div class="p-4 bg-gray-50 border-b border-gray-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">🛍️ Sephora <span class="text-xs bg-gray-200 text-gray-800 px-2 py-1 rounded">Luxury</span></h3></div>
+            <div class="p-4 space-y-4">
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#1 Niacinamide</span><span class="text-xs bg-slate-100 text-slate-600 font-bold px-1.5 py-0.5 rounded">Premium</span></div><p class="text-xs text-slate-600">두피 스킨케어화. 모낭 강화 및 피지 조절.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#2 Honey</span><span class="text-xs bg-slate-100 text-slate-600 font-bold px-1.5 py-0.5 rounded">Gisou Viral</span></div><p class="text-xs text-slate-600">천연 보습(Humectant). 윤리적 성분.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#3 Bergamot</span><span class="text-xs bg-purple-100 text-purple-600 font-bold px-1.5 py-0.5 rounded">+366%</span></div><p class="text-xs text-slate-600">클린뷰티 & 탈모 방지. 시트러스 향.</p></div>
+            </div>
+          </div>
+          <!-- Ulta Column -->
+          <div class="card border-t-8 border-orange-500 bg-white">
+            <div class="p-4 bg-orange-50 border-b border-orange-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">💄 Ulta <span class="text-xs bg-orange-200 text-orange-800 px-2 py-1 rounded">Mass+Prem</span></h3></div>
+            <div class="p-4 space-y-4">
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#1 Biotin+Rosemary</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">65% Share</span></div><p class="text-xs text-slate-600">Hair Regrowth. 35-55세 여성 타겟.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#2 Keratin</span><span class="text-xs bg-slate-100 text-slate-600 font-bold px-1.5 py-0.5 rounded">Repair</span></div><p class="text-xs text-slate-600">모발 구조 강화 및 손상 복구.</p></div>
+              <div><div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">#3 Peptides</span><span class="text-xs bg-slate-100 text-slate-600 font-bold px-1.5 py-0.5 rounded">Innovation</span></div><p class="text-xs text-slate-600">럭셔리 혁신(성장 인자). 고가 라인.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 text-right text-xs text-slate-500">
+          Sources: <a href="https://ptsml.id/id/article/hair-care-trends-in-2025-here-are-the-5-most-popular-ingredients" target="_blank" class="text-blue-500 hover:underline">PTSML</a>, <a href="https://youtu.be/0QjY8B0hHS0" target="_blank" class="text-blue-500 hover:underline">YouTube Trend</a>, <a href="https://www.elle.com/beauty/hair/a65832681/best-hair-products-2025/" target="_blank" class="text-blue-500 hover:underline">ELLE</a>
+        </div>
+      </section>
+
+      <!-- 7. Amazon Category Trend (Moved up) -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">📦 Amazon Category Trend</h2>
+        <div class="card p-6 h-auto">
+          <h3 class="text-lg font-bold text-slate-700 mb-4 border-b pb-2">Key Insights & Sources (Full Width)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Modified Hair Treatment Oils (Source issue) -->
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Hair Treatment Oils</strong><span class="text-xs bg-blue-100 text-blue-800 px-2 rounded">Reference</span></div><p class="text-xs text-slate-600 mt-1">지속적인 수요 (Steady Demand).</p><span class="text-xs text-slate-400">Emergen Research (Access Limited)</span></div>
+              
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Regrowth Treatments</strong><span class="text-xs bg-amber-100 text-amber-800 px-2 rounded">CAGR 6.20%</span></div><p class="text-xs text-slate-600 mt-1">의약품/기기 포함 큰 규모.</p><a href="https://www.coherentmarketinsights.com/market-insight/hair-loss-treatment-market-4374" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Hair Loss Shampoo & Conditioner</strong><span class="text-xs bg-emerald-100 text-emerald-800 px-2 rounded">CAGR 7.77%</span></div><p class="text-xs text-slate-600 mt-1">최대 시장 점유율(88%). OTC 접근 용이.</p><a href="https://www.mordorintelligence.com/industry-reports/hair-loss-treatment-products-market" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Scalp Treatments</strong><span class="text-xs bg-indigo-100 text-indigo-800 px-2 rounded">CAGR 7.2%</span></div><p class="text-xs text-slate-600 mt-1">두피 스킨케어화(Skinification) 트렌드.</p><a href="https://www.linkedin.com/pulse/united-states-scalp-hair-care-mask-market-size-application-l5i3f" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Hair Masks</strong><span class="text-xs bg-gray-200 text-gray-800 px-2 rounded">CAGR 5.40%</span></div><p class="text-xs text-slate-600 mt-1">열 마스크(Heat Mask)가 80% 주류.</p><a href="https://www.grandviewresearch.com/industry-analysis/hair-mask-market" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+              
+              <!-- Modified Serum (Unified to Straits 7.07%) -->
+              <div class="p-3 bg-slate-50 rounded hover:bg-slate-100"><div class="flex justify-between"><strong>Hair Loss Serums</strong><span class="text-xs bg-purple-100 text-purple-800 px-2 rounded">CAGR 7.07%</span></div><p class="text-xs text-slate-600 mt-1">틈새 시장 중 가장 빠른 성장.</p><a href="https://straitsresearch.com/report/hair-serum-market" target="_blank" class="text-xs text-blue-500 hover:underline">View Report →</a></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Amazon Customer Review Analysis (Moved down) -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">🗣️ Amazon Customer Voice Analysis (Review Sentiment)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Positive Part 1: Core Satisfaction -->
+          <div class="card border-t-8 border-blue-600 bg-white">
+            <div class="p-4 bg-blue-50 border-b border-blue-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">👍 Core Satisfaction <span class="text-xs bg-blue-200 text-blue-800 px-2 py-1 rounded">Primary Value</span></h3></div>
+            <div class="p-4 space-y-5">
+              <!-- Item 1 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">① 두피 세정 체감</span><span class="text-xs bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">24.66% (91건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"My scalp feels really clean and refreshed..."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-blue-200 pl-2">미국 소비자는 샴푸의 1차 가치를 ‘모발’보다 ‘두피 세정 체감’에서 먼저 인식.</p>
+              </div>
+              <!-- Item 2 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">② 모발 촉감 개선</span><span class="text-xs bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">18.70% (69건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"My hair is so soft and silky, I keep touching it."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-blue-200 pl-2">촉감 변화는 탈모 효능보다 먼저 체감되는 ‘즉각 만족 포인트’.</p>
+              </div>
+              <!-- Item 3 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">③ 향 & 사용감 만족</span><span class="text-xs bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">4.34% (16건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"The shampoo smells luxurious and clean."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-blue-200 pl-2">향과 사용감은 ‘효과 이전의 감정 설득 영역’으로 재구매 연결.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Positive Part 2: Efficacy & Trust -->
+          <div class="card border-t-8 border-emerald-500 bg-white">
+            <div class="p-4 bg-emerald-50 border-b border-emerald-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">✨ Efficacy & Trust <span class="text-xs bg-emerald-200 text-emerald-800 px-2 py-1 rounded">Confidence</span></h3></div>
+            <div class="p-4 space-y-5">
+              <!-- Item 4 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">④ 볼륨 & 두께 인식</span><span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">2.44% (9건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"My hair looks thicker and fuller than before."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-emerald-200 pl-2">볼륨 인식은 탈모 감소보다 ‘시각적 확신’을 더 빠르게 형성.</p>
+              </div>
+              <!-- Item 5 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">⑤ 탈모 감소 체감</span><span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">1.08% (4건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"I see less hair falling out in the shower now."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-emerald-200 pl-2">빈도는 낮지만, 구매 확신을 굳히는 가장 강한 고관여 신호.</p>
+              </div>
+              <!-- Item 6 -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">⑥ 자극 없음 & 안정</span><span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">0.81% (3건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"It’s not itchy at all, even on my sensitive scalp."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-emerald-200 pl-2">민감 두피 타깃에게는 효능 이전에 필수적인 ‘구매 안전장치’.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Negative Reviews -->
+          <div class="card border-t-8 border-red-500 bg-white">
+            <div class="p-4 bg-red-50 border-b border-red-100"><h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">⚠️ Negative Risks <span class="text-xs bg-red-200 text-red-800 px-2 py-1 rounded">Churn Factors</span></h3></div>
+            <div class="p-4 space-y-5">
+              <!-- Item 1: Greasy -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">① 유분 과다 & 떡짐</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">11.65% (43건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"Feels oily quickly after washing..."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-red-200 pl-2">지성·복합성 두피 타깃 재구매 차단 핵심 요인.</p>
+              </div>
+              <!-- Item 2: Irritation -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">② 두피 자극 (Itch/Burn)</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">8.13% (30건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"My scalp was burning and itchy..."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-red-200 pl-2">전환 차단 + 악성 리뷰 증폭의 최상위 트리거.</p>
+              </div>
+              <!-- Item 3: Dryness -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">③ 건조 & 당김</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">1.90% (7건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"Scalp feels tight and dry."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-red-200 pl-2">세정력 강점이 ‘과도한 세정’으로 인식될 리스크.</p>
+              </div>
+              <!-- Item 4: No Effect -->
+              <div>
+                <div class="flex justify-between items-center mb-1"><span class="font-bold text-slate-800">④ 효과 체감 실패</span><span class="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">1.36% (5건)</span></div>
+                <p class="text-xs text-slate-700 italic mb-1">"Saw no difference after weeks."</p>
+                <p class="text-xs text-slate-500 border-l-2 border-red-200 pl-2">고관여 소비자의 기대 꺾임 → 재구매 0 수렴.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 8. Social Media (Refined) -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">📱 US Social Media Strategy for Dr.FORHAIR (2025)</h2>
+        <div class="card p-6 bg-white border border-gray-200">
+           <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-gray-100">
+               <div><h3 class="text-xl font-bold text-slate-800">Platform Usage by Age & Strategic Insights</h3></div>
+               <div class="text-right mt-2 md:mt-0"><a href="https://www.pewresearch.org/internet/2025/11/20/americans-social-media-use-2025/" target="_blank" class="text-xs text-blue-500 font-bold hover:underline flex items-center justify-end gap-1">Pew Research Center (Nov 2025) ↗</a></div>
+           </div>
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+               <div><h4 class="text-sm font-bold text-slate-600 mb-4 uppercase tracking-wide">📊 Generation Breakdown</h4><div class="h-[300px] relative"><canvas id="socialMediaAgeChart"></canvas></div></div>
+               <div class="border-l border-gray-100 pl-0 lg:pl-8 pt-6 lg:pt-0">
+                   <h4 class="text-sm font-bold text-slate-600 mb-6 uppercase tracking-wide">🎯 Dr.ForHair Action Plan</h4>
+                   <div class="space-y-4">
+                       <div class="p-3 bg-red-50 border-l-4 border-red-500 rounded"><h5 class="font-bold text-red-700 text-sm mb-1">YouTube (Edu & Trust)</h5><p class="text-xs text-slate-600"><strong>Strategy:</strong> 두피 케어(Scaling) 교육 콘텐츠 및 전문가 리뷰 영상. <br><strong>Action:</strong> 'How-to' 검색어 상위 노출 목표.</p></div>
+                       <div class="p-3 bg-black border-l-4 border-slate-700 rounded text-white bg-opacity-90"><h5 class="font-bold text-white text-sm mb-1">TikTok (Viral & Visual)</h5><p class="text-xs text-gray-300"><strong>Strategy:</strong> 두피 각질 제거 전후(Before/After) 시각적 임팩트 강조. <br><strong>Action:</strong> ASMR 스케일링 숏폼 챌린지.</p></div>
+                       <div class="p-3 bg-pink-50 border-l-4 border-pink-500 rounded"><h5 class="font-bold text-pink-700 text-sm mb-1">Instagram (Brand Image)</h5><p class="text-xs text-slate-600"><strong>Strategy:</strong> 프리미엄 브랜드 이미지 구축 및 인플루언서 공구. <br><strong>Action:</strong> 고감도 텍스처 컷 및 라이프스타일 화보.</p></div>
+                   </div>
+               </div>
+           </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Other Tabs -->
+    <div id="europe" class="tab-content"><section class="card p-12 text-center bg-gray-50 border-dashed border-2 border-gray-300"><div class="text-4xl mb-4">🚧</div><h3 class="text-xl font-bold text-slate-600 mb-2">콘텐츠 제작 예정</h3></section></div>
+    <div id="china" class="tab-content"><section class="card p-12 text-center bg-gray-50 border-dashed border-2 border-gray-300"><div class="text-4xl mb-4">🚧</div><h3 class="text-xl font-bold text-slate-600 mb-2">콘텐츠 제작 예정</h3></section></div>
+    <div id="japan" class="tab-content"><section class="card p-12 text-center bg-gray-50 border-dashed border-2 border-gray-300"><div class="text-4xl mb-4">🚧</div><h3 class="text-xl font-bold text-slate-600 mb-2">콘텐츠 제작 예정</h3></section></div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-slate-500 text-sm pb-12"><p>🔒 <strong>Confidential</strong> | © 2025 Dr.FORHAIR Strategic Planning Team</p></footer>
+  </div>
+
+  <script>
+    let charts = {};
+    function destroyChart(id) { if (charts[id]) { charts[id].destroy(); charts[id] = null; } }
+
+    function switchTab(tabId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active','bg-white','border-gray-200'); t.classList.add('bg-transparent','border-transparent'); });
+      document.getElementById(tabId).classList.add('active');
+      const activeBtn = Array.from(document.querySelectorAll('.tab')).find(btn => btn.getAttribute('onclick').includes(tabId));
+      if(activeBtn) { activeBtn.classList.add('active','bg-white','border-gray-200'); activeBtn.classList.remove('bg-transparent','border-transparent'); }
+      
+      const getCtx = (id) => { const el = document.getElementById(id); return el ? el.getContext('2d') : null; };
+
+      if (tabId === 'global') initGlobalCharts();
+      if (tabId === 'usa') initUSACharts();
+    }
+
+    function initGlobalCharts() {
+        const ctxGlobal = document.getElementById('globalGrowthChart');
+        const ctxTrend = document.getElementById('trendChart');
+
+        if (ctxGlobal) {
+            destroyChart('globalGrowthChart');
+            const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030];
+            const generateCAGRData = (start, cagr, yearsCount) => {
+                const data = [];
+                for(let i = 0; i < yearsCount; i++) {
+                const val = start * Math.pow(1 + cagr/100, i);
+                data.push(val.toFixed(2));
+                }
+                return data;
+            };
+            const globalData = generateCAGRData(103.94, 6.4, 7);
+            const usaData = generateCAGRData(18.21, 5.8, 7);
+            const europeData = generateCAGRData(20.91, 6.8, 7);
+            const chinaData = generateCAGRData(12.30, 6.3, 7);
+            const japanData = generateCAGRData(4.69, 5.7, 7);
+            const koreaData = generateCAGRData(3.78, 8.4, 7);
+
+            charts['globalGrowthChart'] = new Chart(ctxGlobal.getContext('2d'), { type: 'line', data: { labels: years, datasets: [ 
+                { label: 'Global', data: globalData, borderColor: '#1e40af', borderWidth: 3 },
+                { label: 'Europe', data: europeData, borderColor: '#059669', borderWidth: 2 },
+                { label: 'USA', data: usaData, borderColor: '#2563eb', borderWidth: 2 },
+                { label: 'China', data: chinaData, borderColor: '#dc2626', borderWidth: 2 },
+                { label: 'Japan', data: japanData, borderColor: '#8b5cf6', borderWidth: 2 },
+                { label: 'Korea', data: koreaData, borderColor: '#db2777', borderDash: [5,5], borderWidth: 2 }
+            ]}, options: { responsive: true, maintainAspectRatio: false, 
+                scales: { 
+                    x: { display: false },
+                    y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Market Size ($B)' }, ticks: { callback: function(value) { return '$' + value + 'B'; } } }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 20 } },
+                    tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    callbacks: {
+                        label: function(context) {
+                        return context.dataset.label + ' : $' + context.parsed.y + 'B';
+                        }
+                    }
+                    }
+                }
+            } });
+        }
+        
+        if (ctxTrend) {
+            destroyChart('trendChart');
+            charts['trendChart'] = new Chart(ctxTrend.getContext('2d'), {
+                type: 'bar',
+                data: {
+                  labels: ['AI Sustainable', 'AI Advisor', 'Premium/Luxury', 'Natural/Organic', 'Bond Repair', 'Hair Loss', 'Scalp Care'],
+                  datasets: [{
+                    label: 'CAGR Growth Rate (%)',
+                    data: [22.9, 11.96, 9.4, 9.4, 9.3, 7.77, 6.5],
+                    backgroundColor: ['#4338ca', '#7e22ce', '#be185d', '#059669', '#f59e0b', '#dc2626', '#2563eb'],
+                    borderRadius: 6
+                  }]
+                },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+        }
+    }
+
+    function initUSACharts() {
+        const ctxGrowth = document.getElementById('usaGrowthChart');
+        const ctxCat = document.getElementById('usCategoryGrowthChart');
+        const ctxPlat = document.getElementById('usaPlatformChartV6');
+        const ctxEmerging = document.getElementById('emergingIngredientChart');
+        const ctxAmazon = document.getElementById('amazonTrendChart');
+        const ctxSocial = document.getElementById('socialMediaAgeChart');
+
+        if(ctxGrowth) {
+             destroyChart('usaGrowthChart');
+             const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030];
+             const usaData = Array.from({length:7}, (_,i) => (18.21 * Math.pow(1.058, i)).toFixed(2));
+             charts['usaGrowthChart'] = new Chart(ctxGrowth.getContext('2d'), { type: 'line', data: { labels: years, datasets: [{ label: 'USA Market', data: usaData, borderColor: '#2563eb', fill: true, backgroundColor: 'rgba(37,99,235,0.1)' }] }, options: { responsive: true, maintainAspectRatio: false, scales: { x: { display: false }, y: { ticks: { callback: function(value) { return '$' + value + 'B'; } } } }, plugins: { tooltip: { callbacks: { label: function(context) { return 'Market Size: $' + context.parsed.y + 'B'; } } } } } });
+        }
+
+        if(ctxCat) {
+             destroyChart('usCategoryGrowthChart');
+             const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030];
+             const gen = (b, r) => Array.from({length:7}, (_,i) => (b * Math.pow(1+r/100, i)).toFixed(2));
+             
+             const dataShampoo = gen(11.0, 3.5);
+             const dataConditioner = gen(7.0, 4.2);
+             const dataTonic = gen(2.5, 6.5);
+             // Adjusted Serum to 7.07% (Straits)
+             const dataSerum = gen(1.5, 7.07);
+             // Adjusted Scrub to 10.2% (FMI)
+             const dataScrub = gen(0.8, 10.2);
+
+             charts['usCategoryGrowthChart'] = new Chart(ctxCat.getContext('2d'), { type: 'line', data: { labels: years, datasets: [
+                { label: 'Shampoo (3.5%)', data: dataShampoo, borderColor: '#64748b', borderWidth: 2, tension: 0.4, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: '#fff' },
+                { label: 'Conditioner (4.2%)', data: dataConditioner, borderColor: '#3b82f6', borderWidth: 2, tension: 0.4, pointRadius: 3, pointHoverRadius: 6, pointBackgroundColor: '#fff' },
+                { label: 'Hair Tonic (6.5%)', data: dataTonic, borderColor: '#f59e0b', borderWidth: 3, tension: 0.4, pointRadius: 4, pointHoverRadius: 6, pointBackgroundColor: '#fff' },
+                { label: 'Hair Serum (7.1%)', data: dataSerum, borderColor: '#7e22ce', borderWidth: 3, tension: 0.4, pointRadius: 4, pointHoverRadius: 7, pointBackgroundColor: '#fff' },
+                { label: 'Scalp Scrub (10.2%)', data: dataScrub, borderColor: '#10b981', borderWidth: 3, tension: 0.4, pointRadius: 4, pointHoverRadius: 7, pointBackgroundColor: '#fff' }
+             ]}, options: { responsive: true, maintainAspectRatio: false, 
+                 plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 8, padding: 20 } }, tooltip: { mode: 'index', intersect: false } },
+                 scales: { y: { display: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'Market Size ($B)' } }, x: { grid: { display: false } } }
+             } });
+        }
+
+        if(ctxPlat) {
+             destroyChart('usaPlatformChartV6');
+             charts['usaPlatformChartV6'] = new Chart(ctxPlat.getContext('2d'), { type: 'bar', data: { labels: ['Amazon', 'Walmart', 'Sephora', 'TikTok'], datasets: [
+                { label: '2024 (%)', data: [10, 8, 6, 0.2], backgroundColor: '#cbd5e1' }, { label: '2025 (%)', data: [14.5, 13, 10, 2], backgroundColor: ['#eab308', '#2563eb', '#1e293b', '#db2777'] }
+             ]}, options: { responsive: true, maintainAspectRatio: false, scales: { x: { display: true } } } });
+        }
+
+        if(ctxEmerging) {
+             destroyChart('emergingIngredientChart');
+             charts['emergingIngredientChart'] = new Chart(ctxEmerging.getContext('2d'), { type: 'bar', data: { labels: ['Bergamot', 'Onion', 'Pumpkin Seed'], datasets: [{ label: 'Growth %', data: [366, 309, 186], backgroundColor: ['#7e22ce', '#f59e0b', '#10b981'] }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+        }
+
+        if(ctxAmazon) {
+             destroyChart('amazonTrendChart');
+             charts['amazonTrendChart'] = new Chart(ctxAmazon.getContext('2d'), { type: 'bar', data: { labels: ['Oils', 'Regrowth', 'Shampoo', 'Scalp', 'Masks', 'Serums'], datasets: [{ data: [9.7, 4.78, 2.59, 1.2, 0.69, 0.34], backgroundColor: ['#3b82f6','#f59e0b','#10b981','#6366f1','#94a3b8','#a855f7'] }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { display: false }, y: { grid: { display: false } } } } });
+        }
+
+        if(ctxSocial) {
+             destroyChart('socialMediaAgeChart');
+             charts['socialMediaAgeChart'] = new Chart(ctxSocial.getContext('2d'), {
+                type: 'bar',
+                data: {
+                  labels: ['18-29', '30-49', '50-64', '65+'],
+                  datasets: [
+                    { label: 'YouTube', data: [93, 94, 86, 65], backgroundColor: '#ef4444' },
+                    { label: 'Facebook', data: [68, 78, 70, 59], backgroundColor: '#3b82f6' },
+                    { label: 'Instagram', data: [80, 66, 36, 19], backgroundColor: '#db2777' },
+                    { label: 'TikTok', data: [59, 25, 10, 5], backgroundColor: '#1e293b' }
+                  ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+             });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        initGlobalCharts();
+    });
+  </script>
+</body>
+</html>
